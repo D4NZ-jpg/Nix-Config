@@ -37,6 +37,22 @@
         "type": "github"
       }
     },
+    "dotfiles": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1755775639,
+        "narHash": "sha256-MCN3HOln02MHSu3KDqCy0d8pc2nMTixqei6021f6LlA=",
+        "owner": "D4NZ-jpg",
+        "repo": "dotfiles",
+        "rev": "953ab046ad904f133313f64558a850b656971955",
+        "type": "github"
+      },
+      "original": {
+        "owner": "D4NZ-jpg",
+        "repo": "dotfiles",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -95,6 +111,7 @@
     "root": {
       "inputs": {
         "darwin": "darwin",
+        "dotfiles": "dotfiles",
         "home-manager": "home-manager",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs"

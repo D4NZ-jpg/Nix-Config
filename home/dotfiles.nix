@@ -1,16 +1,13 @@
-{ pkgs, ... }:
+{ pkgs, dotfilesPath ? null, ... }:
 let
   # ========================================
   # Dotfiles Configuration
   # ========================================
   # 
-  # To use your GitHub dotfiles, first clone them locally:
-  #   git clone https://github.com/D4NZ-jpg/dotfiles.git ~/dotfiles
+  # Dotfiles path passed from flake inputs
+  # Falls back to local path if not provided
   #
-  # Then uncomment and adjust the paths below to match your dotfiles structure.
-  #
-  dotfilesPath = "/Users/dan/dotfiles";  # Adjust if you clone elsewhere
-  
+  dotfiles = if dotfilesPath != null then dotfilesPath else "/Users/dan/dotfiles";
 in
 {
   # ========================================
@@ -20,8 +17,6 @@ in
   # Bat - cat with syntax highlighting
   programs.bat = {
     enable = true;
-    # If you have bat config in dotfiles, uncomment:
-    # configFile = "${dotfilesPath}/.config/bat/config";
   };
   
   # Zoxide - smarter cd
@@ -29,63 +24,51 @@ in
     enable = true;
     enableZshIntegration = true;
     enableBashIntegration = true;
-    # Custom options if needed
-    # options = [ "--cmd" "j" ];
   };
   
-  # Fastfetch - system info
-  programs.fastfetch = {
-    enable = true;
-    # If you have fastfetch config, uncomment:
-    # configFile = "${dotfilesPath}/.config/fastfetch/config.json";
-  };
-  
-  # Neovim - enable and optionally link your config
+  # Neovim - use your existing config from dotfiles
   programs.neovim = {
     enable = true;
     viAlias = true;
     vimAlias = true;
     defaultEditor = true;
-    
-    # Option A: Use your existing Neovim config from dotfiles
-    # Uncomment this if your dotfiles have a nvim directory:
-    # home.file.".config/nvim".source = "${dotfilesPath}/.config/nvim";
-    
-    # Option B: Use Home Manager's config (works alongside your files)
-    # Uncomment to add extra config:
-    # extraLuaConfig = ''
-    #   -- Your additional Lua config here
-    # '';
+  };
+  
+  # Kitty - basic terminal configuration in Nix
+  programs.kitty = {
+    enable = true;
+    settings = {
+      # Basic Kitty settings
+      font_family = "FiraCode Nerd Font";
+      font_size = 12;
+      background_opacity = "0.95";
+      cursor_shape = "beam";
+      enable_audio_bell = false;
+      window_padding_width = 10;
+    };
+  };
+  
+  # Fastfetch - basic Darwin configuration in Nix
+  programs.fastfetch = {
+    enable = true;
+    # Basic settings for macOS
+    settings = {
+      logo = {
+        source = "auto";
+      };
+      display = {
+        separator = "─";
+      };
+    };
   };
   
   # ========================================
-  # Link Other Dotfiles
+  # Link Neovim Config from Dotfiles
   # ========================================
   # 
-  # Uncomment the ones you want to use from your dotfiles repo:
-  #
+  # Only Neovim config is linked from dotfiles (as requested)
+  # Everything else is configured in Nix above
   
-  # Shell configs (if not using Home Manager's programs.zsh)
-  # home.file.".zshrc".source = "${dotfilesPath}/.zshrc";
-  # home.file.".zprofile".source = "${dotfilesPath}/.zprofile";
-  
-  # Other config files
-  # home.file.".tmux.conf".source = "${dotfilesPath}/.tmux.conf";
-  # home.file.".config/alacritty/alacritty.yml".source = "${dotfilesPath}/.config/alacritty/alacritty.yml";
-  
-  # Git config (you're already using programs.git, but you can add extra files)
-  # home.file.".config/git/ignore".source = "${dotfilesPath}/.config/git/ignore";
-  
-  # ========================================
-  # Alternative: Fetch Directly from GitHub
-  # ========================================
-  # 
-  # If you prefer to fetch directly (slower, less flexible):
-  #
-  # dotfiles = builtins.fetchGit {
-  #   url = "https://github.com/D4NZ-jpg/dotfiles.git";
-  #   ref = "main";  # Change to "master" if that's your default branch
-  # };
-  # 
-  # Then use: home.file.".config/nvim".source = "${dotfiles}/.config/nvim";
+  # Neovim - link your full config from dotfiles
+  home.file.".config/nvim".source = "${dotfiles}/dot_config/nvim";
 }

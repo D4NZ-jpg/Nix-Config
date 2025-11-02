@@ -14,6 +14,10 @@
 
     # declarative homebrew management
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    
+    # dotfiles repository
+    dotfiles.url = "github:D4NZ-jpg/dotfiles";
+    dotfiles.flake = false;
   };
 
   outputs =
@@ -23,6 +27,7 @@
       nixpkgs,
       home-manager,
       nix-homebrew,
+      dotfiles,
       ...
     }@inputs:
     let
@@ -37,8 +42,11 @@
           ./darwin
           ./hosts/macbook/configuration.nix
         ];
-        specialArgs = { inherit inputs self primaryUser; };
+        specialArgs = { inherit inputs self primaryUser dotfiles; };
       };
+      
+      # Expose dotfiles path for use in modules
+      dotfilesPath = inputs.dotfiles.outPath;
 
     };
 }

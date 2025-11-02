@@ -39,6 +39,8 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
+    # Backup existing files before overwriting
+    backupFileExtension = "backup";
     users.${primaryUser} = {
       imports = [
         ../home
@@ -46,6 +48,7 @@
     };
     extraSpecialArgs = {
       inherit inputs self primaryUser;
+      dotfilesPath = inputs.dotfiles.outPath;
     };
   };
 
