@@ -17,14 +17,13 @@
     casks = [
       # OS enhancements
       #"aerospace"
-      "cleanshot"
       "hiddenbar"
       "raycast"
-      "betterdisplay"
 
       # dev
       "cursor"
       "kitty"
+      "postman"
 
       # messaging
       "discord"
@@ -36,7 +35,6 @@
       "zen"
     ];
     brews = [
-      "docker"
     ];
     taps = [
       "nikitabobko/tap"
