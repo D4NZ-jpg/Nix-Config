@@ -5,6 +5,7 @@
       # dev tools
       curl
       lazygit # Terminal UI for git
+      lf # Terminal file manager
       htop
       tree
       ripgrep
