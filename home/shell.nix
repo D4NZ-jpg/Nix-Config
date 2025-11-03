@@ -31,7 +31,7 @@ let
       done
       local saved_prompt=$PROMPT
       local saved_rprompt=$RPROMPT
-      PROMPT='$(starship_transient_prompt_func) '
+      PROMPT=$'\n''$(starship_transient_prompt_func) '
       RPROMPT='$(starship_transient_rprompt_func)'
       zle .reset-prompt
       PROMPT=$saved_prompt
