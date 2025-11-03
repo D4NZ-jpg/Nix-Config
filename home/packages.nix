@@ -22,6 +22,7 @@
 
 
       # misc
+      syncthing
       yt-dlp
       ffmpeg
 

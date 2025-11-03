@@ -22,17 +22,18 @@
 
       # dev
       "cursor"
+      "cursor-cli"
       "kitty"
       "postman"
 
       # messaging
       "discord"
       "slack"
+      "whatsapp"
 
       # other
       "anki"
       "obsidian"
-      "syncthing"
       "zen"
     ];
     brews = [

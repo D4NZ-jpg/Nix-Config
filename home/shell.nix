@@ -65,6 +65,8 @@ in
     shellAliases = {
       # LazyGit (zoxide already provides 'z' command via integration)
       lz = "lazygit";
+      # Cursor Agent
+      ca = "cursor-agent";
       # Common shortcuts
       la = "ls -la";
       ".." = "cd ..";
@@ -220,7 +222,7 @@ in
         format = "[$symbol$pyenv_prefix($version)( \\($virtualenv\\)) ]($style)";
         symbol = " ";
         version_format = "$raw";
-        style = "bg:python fg:text_light";
+        style = "fg:python";
       };
 
       conda = {
