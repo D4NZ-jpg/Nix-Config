@@ -32,6 +32,7 @@
       # other
       "anki"
       "obsidian"
+      "syncthing"
       "zen"
     ];
     brews = [
