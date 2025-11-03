@@ -43,8 +43,10 @@ in
     enable = true;
     settings = {
       # Font settings
-      font_family = "FiraCode Nerd Font";
+      font_family = "FiraCode Nerd Font Mono";
       font_size = 12;
+      # Enable font features for better icon rendering
+      font_features = "+zero +ss01 +ss02 +ss03 +ss04 +ss05 +ss06 +ss07 +ss08 +cv01 +cv02 +cv03 +cv04 +cv05 +cv06 +cv07 +cv08 +cv09 +cv10";
       background_opacity = 0.8;
       cursor_shape = "beam";
       enable_audio_bell = false;
@@ -117,10 +119,9 @@ in
     };
   };
 
-  # Fastfetch - basic Darwin configuration in Nix
+  # Fastfetch - enhanced configuration with extra system data
   programs.fastfetch = {
     enable = true;
-    # Basic settings for macOS
     settings = {
       logo = {
         source = "auto";
@@ -128,6 +129,23 @@ in
       display = {
         separator = "─";
       };
+      # Show extra system information
+      modules = [
+        "title"
+        "separator"
+        "os"
+        "host"
+        "kernel"
+        "uptime"
+        "packages"
+        "shell"
+        "cpu"
+        "gpu"
+        "memory"
+        "disk"
+        "battery"
+        "separator"
+      ];
     };
   };
 

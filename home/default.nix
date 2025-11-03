@@ -12,6 +12,7 @@
     stateVersion = "25.05";
     sessionVariables = {
       # shared environment variables
+      EDITOR = "nvim";
     };
 
     # create .hushlogin file to suppress login messages
