@@ -17,4 +17,19 @@
     # create .hushlogin file to suppress login messages
     file.".hushlogin".text = "";
   };
+
+  # Launch Raycast on login using launchd
+  launchd.agents.raycast = {
+    enable = true;
+    config = {
+      Label = "com.raycast.macos";
+      ProgramArguments = [
+        "/usr/bin/open"
+        "-a"
+        "Raycast"
+      ];
+      RunAtLoad = true;
+      KeepAlive = false;
+    };
+  };
 }
