@@ -1,10 +1,11 @@
-{ primaryUser, ... }:
+{ primaryUser, inputs, ... }:
 {
   imports = [
     ./packages.nix
     ./git.nix
     ./shell.nix
     ./dotfiles.nix
+    inputs.spicetify-nix.homeManagerModules.spicetify
   ];
 
   home = {

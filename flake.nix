@@ -18,6 +18,9 @@
     # dotfiles repository
     dotfiles.url = "github:D4NZ-jpg/dotfiles";
     dotfiles.flake = false;
+
+    # Spicetify for Spotify customization
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
 
   outputs =
@@ -28,6 +31,7 @@
       home-manager,
       nix-homebrew,
       dotfiles,
+      spicetify-nix,
       ...
     }@inputs:
     let

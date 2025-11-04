@@ -1,4 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
+let
+  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+in
 {
   home = {
     packages = with pkgs; [
@@ -30,6 +33,29 @@
       # fonts
       nerd-fonts.fira-code
       nerd-fonts.fira-mono
+    ];
+  };
+
+  # Spicetify configuration for Spotify customization
+  programs.spicetify = {
+    enable = true;
+    theme = spicePkgs.themes.hazy;
+    #theme = spicePkgs.themes.catppuccin;
+    colorScheme = "Base";
+    enabledExtensions = with spicePkgs.extensions; [
+      adblockify
+      hidePodcasts
+      shuffle
+      keyboardShortcut
+      loopyLoop
+      trashbin
+      autoVolume
+      showQueueDuration
+      history
+      autoSkip
+      playNext
+      beautifulLyrics
+      catJamSynced
     ];
   };
 }
