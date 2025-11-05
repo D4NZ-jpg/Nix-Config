@@ -211,7 +211,7 @@ in
 
       nodejs = {
         format = "[$symbol$version ]($style)";
-        style = "bg:node fg:text_light";
+        style = "fg:node";
         symbol = " ";
         version_format = "$raw";
         disabled = false;
@@ -227,7 +227,7 @@ in
 
       conda = {
         format = "[$symbol$environment ]($style)";
-        style = "bg:conda fg:text_light";
+        style = "fg:conda";
         ignore_base = false;
         disabled = false;
         symbol = " ";
@@ -235,7 +235,7 @@ in
 
       java = {
         format = "[$symbol$version ]($style)";
-        style = "bg:java fg:text_light";
+        style = "fg:java";
         version_format = "$raw";
         symbol = " ";
         disabled = false;
@@ -243,7 +243,7 @@ in
 
       c = {
         format = "[$symbol($version(-$name)) ]($style)";
-        style = "bg:clang fg:text_light";
+        style = "fg:clang";
         symbol = " ";
         version_format = "$raw";
         disabled = false;
@@ -251,7 +251,7 @@ in
 
       rust = {
         format = "[$symbol$version ]($style)";
-        style = "bg:rust fg:text_light";
+        style = "fg:rust";
         symbol = "󱘗 ";
         version_format = "$raw";
         disabled = false;
