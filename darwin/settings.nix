@@ -114,4 +114,23 @@
       echo "Raycast not found. It will be added to login items once installed."
     fi
   '';
+
+  # Add top-notch to login items so it starts on login
+  system.activationScripts.configureTopNotchLoginItem = ''
+    echo "Configuring top-notch to start on login..."
+    
+    if [ -d "/Applications/TopNotch.app" ]; then
+      # Kill any existing TopNotch instances to avoid conflicts
+      /usr/bin/killall TopNotch 2>/dev/null || true
+      
+      # Add to login items (this will create a new entry each time, but that's okay)
+      osascript -e 'tell application "System Events" to make login item at end with properties {path:"/Applications/TopNotch.app", hidden:false}' || true
+      
+      echo "Top-notch configured to start on login."
+      echo "Note: TopNotch may need Accessibility permissions in System Settings > Privacy & Security > Accessibility"
+    else
+      echo "Top-notch not found. It will be added to login items once installed."
+    fi
+  '';
+
 }

@@ -34,4 +34,7 @@
       KeepAlive = false;
     };
   };
+
+  # TopNotch is launched via macOS Login Items (see darwin/settings.nix)
+  # This is better for menu bar apps than launchd agents
 }

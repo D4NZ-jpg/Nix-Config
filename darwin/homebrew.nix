@@ -18,6 +18,7 @@
       # OS enhancements
       #"aerospace"
       "hiddenbar"
+      "topnotch"
       "raycast"
 
       # dev
