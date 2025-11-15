@@ -36,8 +36,13 @@
       "anki"
       "obsidian"
       "zen"
+      "notion"
+      "prismlauncher"
+
     ];
     brews = [
+    "entr"
+    "gnuplot"
     ];
     taps = [
       "nikitabobko/tap"
